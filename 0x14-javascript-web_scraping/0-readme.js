@@ -1,20 +1,12 @@
 #!/usr/bin/node
-
-'use strict';
-
-// Import any required modules here
 const fs = require('fs');
 
-// Define your functions here, if necessary
-function readAndPrintFile(file_path) {
-  try {
-    const file_content = fs.readFileSync(file_path, 'utf-8');
-    console.log(file_content);
-  } catch (error) {
-    console.error(error);
-  }
-}
+const filePath = process.argv[2];
 
-// Call your functions here, as necessary
-const file_path = process.argv[2];
-readAndPrintFile(file_path);
+fs.readFile(filePath, 'utf-8', (err, data) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(data);
+  }
+});
